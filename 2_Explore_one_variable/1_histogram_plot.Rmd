@@ -1,0 +1,28 @@
+---
+title: "2_Explore_one_variable"
+output: html_notebook
+---
+
+
+```{r}
+getwd()
+#change directory
+setwd("/Users/Souvik Banerjee/Desktop/Data Science/Data Analyst Nanodegree/3_EDA/2_Explore_one_variable")
+
+#To see files
+list.files()
+
+# Read data
+pf<- read.csv('pseudo_facebook.tsv', sep="\t")
+
+names(pf)
+```
+
+```{r}
+# Create Histogram of Users Birthdays
+library(ggplot2)
+
+#plot histogram
+qplot(x=dob_day, data=pf)
+
+```
