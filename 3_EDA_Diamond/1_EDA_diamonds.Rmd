@@ -1,0 +1,190 @@
+---
+title: "EDA_Diamonds"
+output: html_document
+---
+
+```{r}
+getwd()
+
+#Set Directory
+setwd("/Users/Souvik Banerjee/Desktop/Data_Science/Data_Analyst_Nanodegree/3_EDA/3_EDA_Diamond")
+```
+## Load the data
+```{r}
+library(ggplot2)
+data("diamonds")
+summary(diamonds)
+?diamonds
+
+# To check the details of columns in dataset
+str(diamonds)
+```
+## Histogram of the price of all the diamonds in the diamond data set.
+```{r}
+qplot(x = price, data = diamonds,
+      color=('black'), fill=I('#FF9999'))
+```
+## Summary statistics of the price
+```{r}
+summary(diamonds$price)
+```
+## Diamonds Counts
+```{r}
+summary(diamonds$price < 500)
+summary(diamonds$price < 250)
+```
+## largest peak in the price histogram
+```{r}
+qplot(x = price, data = diamonds, binwidth = 1000,
+      color=('black'), fill=I('#FF9999')) +
+  scale_x_continuous(limits = c(0,20000), breaks = seq(0,20000, 1000))
+```
+## save the plot
+```{r}
+ggsave('priceHistogram.png')
+```
+## histogram of diamond prices by cut
+```{r}
+qplot(x = price, data = diamonds, binwidth = 1000,
+      color=('black'), fill=I('#FF9999')) +
+  scale_x_continuous(limits = c(0,30000), breaks = seq(0,30000, 1000)) +
+  facet_wrap(~cut)
+```
+## distribution for diamonds by cut
+```{r}
+# To change the y-axis
+qplot(x = price, data = diamonds) + facet_wrap(~cut, scales = "free")
+```
+## histogram of price per carat and facet it by cut
+```{r}
+qplot( x = (diamonds$price/diamonds$carat), data = diamonds,
+       color=('black'), fill=I('#FF9999'))+
+  facet_wrap(~cut, scales = "free") +
+  scale_x_log10()
+```
+## cut, price of diamonds using box plots
+```{r}
+qplot(x = cut, y = price, data = diamonds,
+       geom = 'boxplot') +
+  coord_cartesian(ylim = c(0,10000))
+```
+## color, price of diamonds using box plots
+```{r}
+qplot(x = color, y = price, data = diamonds,
+      geom = 'boxplot') +
+  coord_cartesian(ylim = c(0,10000))
+```
+
+## IQR
+```{r}
+IQR(subset(diamonds, price <1000)$price)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
