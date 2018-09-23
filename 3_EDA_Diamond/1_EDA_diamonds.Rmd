@@ -75,11 +75,18 @@ qplot(x = color, y = price, data = diamonds,
   coord_cartesian(ylim = c(0,10000))
 ```
 
-## IQR
+## price per carat of diamonds across the different colors of diamonds using boxplots.
 ```{r}
-IQR(subset(diamonds, price <1000)$price)
+qplot(x = color, y = (diamonds$price/diamonds$carat), data = diamonds, geom = 'boxplot') +
+  coord_cartesian(ylim = c(0,7000))
 ```
-
+## Carat Frequency Polygon
+```{r}
+qplot(x = carat, data = diamonds, binwidth = 0.1, geom = 'freqpoly',
+      xlab = 'Diamond size(carat)',
+      ylab = 'Count') +
+  scale_x_continuous(breaks = seq(0, 5, 0.1))
+```
 
 
 
